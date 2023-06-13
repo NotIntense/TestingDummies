@@ -40,7 +40,7 @@ Open the Remote Admin console.
 
 Use the provided commands to interact with the dummies.
 
-Additional Notes : 
+# Additional Notes : 
 
 This plugin requires Exiled version 7.0.0 or higher.
 The plugin violates VSR. Use on private servers only.
