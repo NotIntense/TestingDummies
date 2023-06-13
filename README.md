@@ -10,7 +10,7 @@ Description: Gives you stats on the specified dummy.
 Usage: dummystats [dummyID]
 
 ``Example: dummystats 3``
-
+--------------------------------------------------------
 RemoveDummy
 Command: RemoveDevDummy
 
@@ -21,7 +21,7 @@ Description: Removes a spawned dev dummy.
 Usage: removedummy [dummyID]
 
 ``Example: removedummy 3``
-
+--------------------------------------------------------
 SpawnDummy
 
 Command: SpawnDevDummy
@@ -33,7 +33,7 @@ Description: Spawns a dummy for development or testing purposes. It has 0 logic.
 Usage: spawndummy [name] [role] [playerID]
 
 ``Example: spawndummy TestDummy ClassD 2``
-
+--------------------------------------------------------
 # Usage
 
 Open the Remote Admin console.
