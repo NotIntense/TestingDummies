@@ -1,16 +1,23 @@
 # Commands
 DummyStats
+
 Command: DummyStats
+
 Aliases: devdummystats, dummystats
+
 Description: Gives you stats on the specified dummy.
+
 Usage: dummystats [dummyID]
 
 ``Example: dummystats 3``
 
 RemoveDummy
 Command: RemoveDevDummy
+
 Aliases: removedummy, removedevdummy, removedev
+
 Description: Removes a spawned dev dummy.
+
 Usage: removedummy [dummyID]
 
 ``Example: removedummy 3``
@@ -18,8 +25,11 @@ Usage: removedummy [dummyID]
 SpawnDummy
 
 Command: SpawnDevDummy
+
 Aliases: spawndummy, spawndevdummy, spawndev
+
 Description: Spawns a dummy for development or testing purposes. It has 0 logic.
+
 Usage: spawndummy [name] [role] [playerID]
 
 ``Example: spawndummy TestDummy ClassD 2``
@@ -27,6 +37,7 @@ Usage: spawndummy [name] [role] [playerID]
 # Usage
 
 Open the Remote Admin console.
+
 Use the provided commands to interact with the dummies.
 
 Additional Notes : 
