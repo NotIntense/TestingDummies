@@ -30,16 +30,21 @@ namespace TestingDummies.Commands
             }
             if(Plugin.Instance.DumRef.Contains(Player.Get(dummyID).ReferenceHub))
             {
-                Player.Dictionary.Remove(Plugin.Instance.spawning.PlayerPrefabs[Player.Get(dummyID)]);
-                Plugin.Instance.DumRef.Remove(Player.Get(dummyID).ReferenceHub);
-                NetworkServer.DestroyPlayerForConnection(Plugin.Instance.spawning.PlayerConnIDs[Player.Get(dummyID)]);
-                NetworkServer.Destroy(Player.Get(dummyID).GameObject);
-                response = $"Removed {Player.Get(dummyID).Nickname}!";
+                Player dummy = Player.Get(dummyID);
+
+                Player.Dictionary.Remove(Plugin.Instance.spawning.PlayerPrefabs[dummy]);
+                Plugin.Instance.DumRef.Remove(dummy.ReferenceHub);
+                dummy.Disconnect();
+                NetworkServer.DestroyPlayerForConnection(Plugin.Instance.spawning.PlayerConnIDs[dummy]);
+                NetworkServer.Destroy(dummy.GameObject);
+                response = $"Removed {dummy.Nickname}!";
                 return true;
             }
             else
             {
-                response = $"ID : '{Player.Get(dummyID).Id}', Nickname : '{Player.Get(dummyID).Nickname}' is not a dummy or you entered a incorrect ID!";
+                Player InvalidDummy = Player.Get(dummyID);
+
+                response = $"ID : '{InvalidDummy.Id}', Nickname : '{InvalidDummy.Nickname}' is not a dummy or you entered a incorrect ID!";
                 return false;
             }
         }
