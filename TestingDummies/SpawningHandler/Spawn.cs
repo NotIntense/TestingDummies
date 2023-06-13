@@ -1,5 +1,4 @@
-﻿using CedMod.Addons.Audio;
-using Exiled.API.Features;
+﻿using Exiled.API.Features;
 using Mirror;
 using PlayerRoles;
 using System;
@@ -50,7 +49,6 @@ namespace TestingDummies.SpawningHandler
             var mouseLookInsameroom = ((IFpcRole)NewPlayer.ReferenceHub.roleManager.CurrentRole).FpcModule.MouseLook;
             mouseLookInsameroom.CurrentHorizontal = Quaternion.Slerp(Quaternion.Euler(0f, mouseLookInsameroom.CurrentHorizontal, 0f), quat, Time.deltaTime).eulerAngles.y;
             mouseLookInsameroom.CurrentVertical = 0;
-
             yield break;
         }
     }
