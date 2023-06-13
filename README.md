@@ -1,4 +1,4 @@
-#Commands
+# Commands
 DummyStats
 Command: DummyStats
 Aliases: devdummystats, dummystats
