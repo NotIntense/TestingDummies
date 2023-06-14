@@ -44,3 +44,5 @@ Use the provided commands to interact with the dummies.
 
 This plugin requires Exiled version 7.0.0 or higher.
 The plugin violates VSR. Use on private servers only.
+
+Devs : Dummies come with a SessionVariable when spawning named "npc"
