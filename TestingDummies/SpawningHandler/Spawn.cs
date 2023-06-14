@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using MEC;
+using Exiled.API.Features.Pickups;
+using System.Linq;
 
 namespace TestingDummies.SpawningHandler
 {
@@ -13,7 +15,7 @@ namespace TestingDummies.SpawningHandler
         readonly int IDs = 1000;
         public Dictionary<Player, GameObject> PlayerPrefabs = new();
         public Dictionary<Player, FakeConnection> PlayerConnIDs = new();
-        public IEnumerator<float> SpawnDum(string Name, RoleTypeId Role, Player targert)
+        public IEnumerator<float> SpawnDum(string Name, RoleTypeId Role, Player target)
         {
             GameObject newPlayer = Instantiate(NetworkManager.singleton.playerPrefab);
             Player NewPlayer = new(newPlayer);
@@ -40,10 +42,10 @@ namespace TestingDummies.SpawningHandler
                 NewPlayer.RankColor = Plugin.Instance.Config.NPCBadgeColor;
             }          
             hubPlayer.characterClassManager.GodMode = false;
-            NewPlayer.RemoteAdminPermissions = PlayerPermissions.AFKImmunity;
+            if (Plugin.Instance.Config.NPCAFKImmunity) NewPlayer.RemoteAdminPermissions = PlayerPermissions.AFKImmunity;
             yield return Timing.WaitForSeconds(0.3f);
             NewPlayer.Role.Set(Role, Exiled.API.Enums.SpawnReason.ForceClass);
-            NewPlayer.Position = targert.Position;
+            NewPlayer.Position = target.Position;
             NewPlayer.SessionVariables.Add("npc", true);
             yield break;
         }

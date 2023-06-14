@@ -30,9 +30,9 @@ namespace TestingDummies.Commands
             }
             if(Plugin.Instance.DumRef.Contains(Dummy.ReferenceHub))
             {
+                Dummy.Disconnect(null);
                 Player.Dictionary.Remove(Plugin.Instance.spawning.PlayerPrefabs[Dummy]);
                 Plugin.Instance.DumRef.Remove(Dummy.ReferenceHub);
-                Dummy.Disconnect();
                 NetworkServer.DestroyPlayerForConnection(Plugin.Instance.spawning.PlayerConnIDs[Dummy]);
                 NetworkServer.Destroy(Dummy.GameObject);
                 response = $"Removed {Dummy.Nickname}!";
