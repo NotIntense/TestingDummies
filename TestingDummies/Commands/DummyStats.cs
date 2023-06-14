@@ -16,30 +16,27 @@ namespace TestingDummies.Commands
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            if (arguments.Count > 1 || arguments.Count < 1)
+            if (arguments.Count != 1)
             {
-                response = "Insufficient arguments. Usage: dummystats [dummyID]";
+                response = "Incorrect arguments. Usage: dummystats [dummyID]";
                 return false;
             }
-            string dummyID = arguments.At(0);
+            Player Dummy = Player.Get(arguments.At(0));
 
-            if (Player.Get(dummyID) == null)
+            if (Dummy == null)
             {
-                response = $"The player, '{dummyID}', dosent exist!";
+                response = $"The player with the specified ID, '{arguments.At(0)}', dosent exist!";
                 return false;
             }
-            if (Plugin.Instance.DumRef.Contains(Player.Get(dummyID).ReferenceHub))
+            if (Plugin.Instance.DumRef.Contains(Dummy.ReferenceHub))
             {
-                Player dummy = Player.Get(dummyID);
-
-                response = $"Stats: Player ID : {dummy.Id}, Name : {dummy.Nickname}, Health : {dummy.Health}, Role : {dummy.Role.Name}";
+                response = $"Stats: Player ID : {Dummy.Id}, Name : {Dummy.Nickname}, Health : {Dummy.Health}, Role : {Dummy.Role.Name}";
                 return true;
             }
             else
             {
-                Player InvalidDummy = Player.Get(dummyID);
 
-                response = $"ID : '{InvalidDummy.Id}', Nickname : '{InvalidDummy.Nickname}' is not a dummy or you entered a incorrect ID!";
+                response = $"ID : '{Dummy.Id}', Nickname : '{Dummy.Nickname}' is not a dummy or you entered a incorrect ID!";
                 return false;
             }
         }

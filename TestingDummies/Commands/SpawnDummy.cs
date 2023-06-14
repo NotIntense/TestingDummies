@@ -3,6 +3,7 @@ using Exiled.API.Features;
 using Exiled.Permissions.Extensions;
 using PlayerRoles;
 using System;
+using MEC;
 
 
 namespace TestingDummies.Commands
@@ -18,26 +19,26 @@ namespace TestingDummies.Commands
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {           
-            if (arguments.Count < 3)
+            if (arguments.Count != 3)
             {
-                response = "Insufficient arguments. Usage: spawndummy [name] [role] [playerID]";
+                response = "Incorrect arguments. Usage: spawndummy [name] [role] [playerID] OR [playerNickname]";
                 return false;
             }
             string name = arguments.At(0);
             string roleString = arguments.At(1);
-            string playerID = arguments.At(2);
+            Player playerID = Player.Get(arguments.At(2));
             if (!Enum.TryParse(roleString, out RoleTypeId role))
             {
                 response = $"Invalid role: {roleString}";
                 return false;
             }
-            if (Player.Get(playerID) == null)
+            if (playerID == null)
             {
-                response = $"Invalid player: {playerID}";
+                response = $"Invalid player with the specified ID OR Nickname: {arguments.At(2)}";
                 return false;
             }
-            MEC.MECExtensionMethods1.RunCoroutine(Plugin.Instance.spawning.SpawnDum(name, role, Player.Get(playerID)));
-            response = $"Spawned dummy with name '{name}', role '{role}', for player '{Player.Get(playerID).Nickname}'";
+            MECExtensionMethods1.RunCoroutine(Plugin.Instance.spawning.SpawnDum(name, role, playerID));
+            response = $"Spawned dummy with name '{name}', role '{role}', for player '{playerID.Nickname}'";
             return true;
         }
 

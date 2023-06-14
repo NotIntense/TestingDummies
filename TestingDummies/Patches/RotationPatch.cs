@@ -8,7 +8,7 @@ namespace TestingDummies.Patches
 {
     //Thank you to the SCP-575 Plugin that I st- borrowed this code from :3
     [HarmonyPatch(typeof(FpcMouseLook), nameof(FpcMouseLook.UpdateRotation))]
-    public class AIRotation
+    public class RotationPatch
     {
         private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
         {

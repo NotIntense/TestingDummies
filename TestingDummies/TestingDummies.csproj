@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\DummyLookAt.cs" />
     <Compile Include="Commands\DummyStats.cs" />
     <Compile Include="Commands\RemoveDummy.cs" />
     <Compile Include="Commands\SpawnDummy.cs" />

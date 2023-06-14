@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using MEC;
-using PlayerRoles.FirstPersonControl;
-using System.IO.Pipes;
 
 namespace TestingDummies.SpawningHandler
 {
@@ -47,10 +45,6 @@ namespace TestingDummies.SpawningHandler
             NewPlayer.Role.Set(Role, Exiled.API.Enums.SpawnReason.ForceClass);
             NewPlayer.Position = targert.Position;
             NewPlayer.SessionVariables.Add("npc", true);
-            Quaternion quat = Quaternion.LookRotation(targert.Rotation, Vector3.up);
-            var mouseLookInsameroom = ((IFpcRole)NewPlayer.ReferenceHub.roleManager.CurrentRole).FpcModule.MouseLook;
-            mouseLookInsameroom.CurrentHorizontal = Quaternion.Slerp(Quaternion.Euler(0f, mouseLookInsameroom.CurrentHorizontal, 0f), quat, Time.deltaTime).eulerAngles.y;
-            mouseLookInsameroom.CurrentVertical = 0;
             yield break;
         }
     }
