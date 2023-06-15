@@ -22,7 +22,7 @@ namespace TestingDummies
         public override string Prefix => "Dev Dum";
         public override string Author => "NotIntense";
         public override PluginPriority Priority => PluginPriority.Medium;
-        public override Version Version => new(2, 0, 4);
+        public override Version Version => new(2, 0, 5);
         public override Version RequiredExiledVersion => new(7, 0, 0);
 
         public override void OnEnabled()
