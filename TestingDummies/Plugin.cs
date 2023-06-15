@@ -22,7 +22,7 @@ namespace TestingDummies
         public override string Prefix => "Dev Dum";
         public override string Author => "NotIntense";
         public override PluginPriority Priority => PluginPriority.Medium;
-        public override Version Version => new(2, 0, 5);
+        public override Version Version => new(2, 1, 5);
         public override Version RequiredExiledVersion => new(7, 0, 0);
 
         public override void OnEnabled()
@@ -32,10 +32,8 @@ namespace TestingDummies
             spawning = new Spawn();
             _harmony = new("DevDummies-Rotation-Patch");
             _harmony.PatchAll();
-
-            Exiled.Events.Handlers.Player.Left += Test;
-
             base.OnEnabled();
+            Log.Warn($"{Name.ToUpper()} DOES AND WILL VIOLATE NORTHWOOD VSR. USE ON PRIVATE SERVERS ONLY AND AT YOUR OWN RISK.");
         }
 
         public override void OnDisabled()
@@ -53,10 +51,5 @@ namespace TestingDummies
             bool isDummy = Instance.DumRef.Contains(hub);
             return isDummy;
         }        
-
-        public void Test(LeftEventArgs ev)
-        {
-            Log.Info($"{ev.Player.Nickname} left the server");
-        }
     }
 }
