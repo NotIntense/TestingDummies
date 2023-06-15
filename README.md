@@ -43,6 +43,6 @@ Use the provided commands to interact with the dummies.
 # Additional Notes : 
 
 This plugin requires Exiled version 7.0.0 or higher.
-THIS PLUGIN VIOLATES NORTHWOOD VSR. Use on private servers only.
+**THIS PLUGIN VIOLATES NORTHWOOD VSR**. Use on private servers only.
 
 Devs : Dummies come with a SessionVariable when spawning named "npc"
