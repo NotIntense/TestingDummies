@@ -1,5 +1,6 @@
 ﻿using CommandSystem;
 using Exiled.API.Features;
+using Exiled.Events.EventArgs.Player;
 using Mirror;
 using System;
 
@@ -30,11 +31,14 @@ namespace TestingDummies.Commands
             }
             if(Plugin.Instance.DumRef.Contains(Dummy.ReferenceHub))
             {
+                LeftEventArgs newLeft = new(Dummy);
+                Exiled.Events.Handlers.Player.OnLeft(newLeft);
                 Dummy.Disconnect(null);
                 Player.Dictionary.Remove(Plugin.Instance.spawning.PlayerPrefabs[Dummy]);
                 Plugin.Instance.DumRef.Remove(Dummy.ReferenceHub);
                 NetworkServer.DestroyPlayerForConnection(Plugin.Instance.spawning.PlayerConnIDs[Dummy]);
                 NetworkServer.Destroy(Dummy.GameObject);
+
                 response = $"Removed {Dummy.Nickname}!";
                 return true;
             }

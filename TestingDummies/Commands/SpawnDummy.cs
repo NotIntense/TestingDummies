@@ -26,19 +26,19 @@ namespace TestingDummies.Commands
             }
             string name = arguments.At(0);
             string roleString = arguments.At(1);
-            Player playerID = Player.Get(arguments.At(2));
+            Player player = Player.Get(arguments.At(2));
             if (!Enum.TryParse(roleString, out RoleTypeId role))
             {
                 response = $"Invalid role: {roleString}";
                 return false;
             }
-            if (playerID == null)
+            if (player == null)
             {
                 response = $"Invalid player with the specified ID OR Nickname: {arguments.At(2)}";
                 return false;
             }
-            MECExtensionMethods1.RunCoroutine(Plugin.Instance.spawning.SpawnDum(name, role, playerID));
-            response = $"Spawned dummy with name '{name}', role '{role}', for player '{playerID.Nickname}'";
+            MECExtensionMethods1.RunCoroutine(Plugin.Instance.spawning.SpawnDum(name, role, player));
+            response = $"Spawned dummy with name '{name}', role '{role}', for player '{player.Nickname}'";
             return true;
         }
 

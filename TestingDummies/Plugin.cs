@@ -4,12 +4,15 @@ using System;
 using System.Collections.Generic;
 using TestingDummies.SpawningHandler;
 using HarmonyLib;
+using Exiled.Events.EventArgs.Player;
 
 namespace TestingDummies
 {
     public class Plugin : Plugin<Config>
     {
         public static Plugin Instance;
+
+
         public List<ReferenceHub> DumRef = new();
         public Spawn spawning;
 
@@ -27,9 +30,10 @@ namespace TestingDummies
 
             Instance = this;
             spawning = new Spawn();
-
             _harmony = new("DevDummies-Rotation-Patch");
             _harmony.PatchAll();
+
+            Exiled.Events.Handlers.Player.Left += Test;
 
             base.OnEnabled();
         }
@@ -38,9 +42,9 @@ namespace TestingDummies
         {
             _harmony.UnpatchAll();
             _harmony = null;
-
             Instance = null;
             spawning = null;
+
             base.OnDisabled();
         }
 
@@ -48,6 +52,11 @@ namespace TestingDummies
         {
             bool isDummy = Instance.DumRef.Contains(hub);
             return isDummy;
+        }        
+
+        public void Test(LeftEventArgs ev)
+        {
+            Log.Info($"{ev.Player.Nickname} left the server");
         }
     }
 }
