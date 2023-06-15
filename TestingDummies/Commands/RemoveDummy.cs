@@ -29,15 +29,15 @@ namespace TestingDummies.Commands
                 response = $"The player with the specified ID, '{arguments.At(0)}', dosent exist!";
                 return false;
             }
-            if(Plugin.Instance.DumRef.Contains(Dummy.ReferenceHub))
+            if(Plugin.Instance.DumRef.Contains(Dummy.ReferenceHub))           
             {
+                Dummy.ReferenceHub.OnDestroy();
+
                 LeftEventArgs newLeft = new(Dummy);
                 Exiled.Events.Handlers.Player.OnLeft(newLeft);
-                Dummy.Disconnect(null);
-                Player.Dictionary.Remove(Plugin.Instance.spawning.PlayerPrefabs[Dummy]);
+
+                // Player.Dictionary.Remove(Plugin.Instance.spawning.PlayerPrefabs[Dummy]);
                 Plugin.Instance.DumRef.Remove(Dummy.ReferenceHub);
-                NetworkServer.DestroyPlayerForConnection(Plugin.Instance.spawning.PlayerConnIDs[Dummy]);
-                NetworkServer.Destroy(Dummy.GameObject);
 
                 response = $"Removed {Dummy.Nickname}!";
                 return true;

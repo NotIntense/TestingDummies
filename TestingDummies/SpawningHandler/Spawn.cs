@@ -18,7 +18,15 @@ namespace TestingDummies.SpawningHandler
         public IEnumerator<float> SpawnDum(string Name, RoleTypeId Role, Player target)
         {
             GameObject newPlayer = Instantiate(NetworkManager.singleton.playerPrefab);
-            Player NewPlayer = new(newPlayer);            
+            Player NewPlayer = new(newPlayer);     
+            try
+            {
+                NewPlayer.Role.Set(RoleTypeId.None);
+            }
+            catch (Exception e)
+            {
+                Log.Debug($"Ignore: {e}");
+            }
             PlayerPrefabs.Add(NewPlayer, newPlayer);
             var fakeConnection = new FakeConnection(IDs + Plugin.Instance.DumRef.Count);
             ReferenceHub hubPlayer = NewPlayer.ReferenceHub;
@@ -48,7 +56,7 @@ namespace TestingDummies.SpawningHandler
             NewPlayer.Position = target.Position;
             NewPlayer.SessionVariables.Add("npc", true);
             VerifiedEventArgs newVerified = new(NewPlayer);
-            Exiled.Events.Handlers.Player.OnVerified(newVerified);
+            Exiled.Events.Handlers.Player.OnVerified(newVerified);           
             yield break;
         }
     }
