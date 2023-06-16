@@ -1,7 +1,11 @@
 ﻿using CommandSystem;
+using CustomPlayerEffects;
+using Exiled.API.Extensions;
 using Exiled.API.Features;
 using Mirror;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TestingDummies.Commands
 {
@@ -30,7 +34,10 @@ namespace TestingDummies.Commands
             }
             if (Plugin.Instance.DumRef.Contains(Dummy.ReferenceHub))
             {
-                response = $"Stats: Player ID : {Dummy.Id}, Name : {Dummy.Nickname}, Health : {Dummy.Health}, Role : {Dummy.Role.Name}";
+                List<string> effectNames = Dummy.ActiveEffects.Select(effect => effect.name).ToList();
+                string activeEffectsString = string.Join(", ", effectNames);
+
+                response = $"Stats: Player ID: {Dummy.Id}, Name: {Dummy.Nickname}, Health: {Dummy.Health}, Role: {Dummy.Role.Name}, Active Effects: {activeEffectsString}";
                 return true;
             }
             else

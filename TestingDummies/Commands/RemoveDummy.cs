@@ -36,7 +36,6 @@ namespace TestingDummies.Commands
                 LeftEventArgs newLeft = new(Dummy);
                 Exiled.Events.Handlers.Player.OnLeft(newLeft);
 
-                // Player.Dictionary.Remove(Plugin.Instance.spawning.PlayerPrefabs[Dummy]);
                 Plugin.Instance.DumRef.Remove(Dummy.ReferenceHub);
 
                 response = $"Removed {Dummy.Nickname}!";

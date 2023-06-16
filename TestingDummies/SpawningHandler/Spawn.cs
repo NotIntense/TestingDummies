@@ -14,6 +14,7 @@ namespace TestingDummies.SpawningHandler
         readonly int IDs = 1000;
         public Dictionary<Player, GameObject> PlayerPrefabs = new();
         public Dictionary<Player, FakeConnection> PlayerConnIDs = new();
+        public Dictionary<ReferenceHub, Player> DumPlayerHubs = new();
 
         public IEnumerator<float> SpawnDum(string Name, RoleTypeId Role, Player target)
         {

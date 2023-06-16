@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using TestingDummies.SpawningHandler;
 using HarmonyLib;
-using Exiled.Events.EventArgs.Player;
 
 namespace TestingDummies
 {
@@ -12,17 +11,15 @@ namespace TestingDummies
     {
         public static Plugin Instance;
 
-
         public List<ReferenceHub> DumRef = new();
         public Spawn spawning;
-
         private Harmony _harmony;
 
         public override string Name => "Dev Dummies";
-        public override string Prefix => "Dev Dum";
+        public override string Prefix => Name;
         public override string Author => "NotIntense";
         public override PluginPriority Priority => PluginPriority.Medium;
-        public override Version Version => new(2, 1, 6);
+        public override Version Version => new(2, 1, 7);
         public override Version RequiredExiledVersion => new(7, 0, 0);
 
         public override void OnEnabled()
