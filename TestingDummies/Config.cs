@@ -8,7 +8,6 @@ namespace TestingDummies
         public bool IsEnabled { get; set; } = true;
         public bool Debug { get; set; } = false;
 
-
         [Description("Gives and shows a badge on the AI")]
         public bool NPCBadgeEnabled { get; set; } = true;
 

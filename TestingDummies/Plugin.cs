@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using TestingDummies.SpawningHandler;
 using HarmonyLib;
+using System.Linq;
 
 namespace TestingDummies
 {
@@ -24,12 +25,13 @@ namespace TestingDummies
 
         public override void OnEnabled()
         {           
-
             Instance = this;
             spawning = new Spawn();
             _harmony = new("DevDummies-Rotation-Patch");
             _harmony.PatchAll();
+
             base.OnEnabled();
+
             Log.Warn($"{Name.ToUpper()} DOES AND WILL VIOLATE NORTHWOOD VSR. USE ON PRIVATE SERVERS ONLY AND AT YOUR OWN RISK.");
         }
 
@@ -47,6 +49,6 @@ namespace TestingDummies
         {
             bool isDummy = Instance.DumRef.Contains(hub);
             return isDummy;
-        }        
+        }            
     }
 }
