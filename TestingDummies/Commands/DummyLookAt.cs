@@ -36,7 +36,7 @@ namespace TestingDummies.Commands
                 response = $"The player with the specified ID, '{arguments.At(1)}', dosent exist!";
                 return false;
             }
-            if (Plugin.Instance.DumRef.Contains(dummy.ReferenceHub))
+            if (dummy.IsNPC)
             {
                 Quaternion quat = Quaternion.LookRotation(target.Position - dummy.Position, Vector3.up);
                 var mouseLook = ((IFpcRole)dummy.ReferenceHub.roleManager.CurrentRole).FpcModule.MouseLook;

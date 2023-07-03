@@ -29,14 +29,12 @@ namespace TestingDummies.Commands
                 response = $"The player with the specified ID, '{arguments.At(0)}', dosent exist!";
                 return false;
             }
-            if(Plugin.Instance.DumRef.Contains(Dummy.ReferenceHub))           
+            if(Dummy.IsNPC)           
             {
                 Dummy.ReferenceHub.OnDestroy();
 
                 LeftEventArgs newLeft = new(Dummy);
                 Exiled.Events.Handlers.Player.OnLeft(newLeft);
-
-                Plugin.Instance.DumRef.Remove(Dummy.ReferenceHub);
 
                 response = $"Removed {Dummy.Nickname}!";
                 return true;

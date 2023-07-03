@@ -16,6 +16,7 @@ namespace TestingDummies
 
         [Description("If NPCBadge is enabled, sets the name")]
         public string NPCBadgeName { get; set; } = "NPC";
+
         [Description("Gives spawned NPCs AFK Immunity (HIGHLY RECOMMENED TO KEEP TRUE AS NPCS ARE CONSTANTLY AFK)")]
         public bool NPCAFKImmunity { get; set; } = true;
     }

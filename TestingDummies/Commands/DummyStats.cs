@@ -1,8 +1,5 @@
 ﻿using CommandSystem;
-using CustomPlayerEffects;
-using Exiled.API.Extensions;
 using Exiled.API.Features;
-using Mirror;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,10 +29,10 @@ namespace TestingDummies.Commands
                 response = $"The player with the specified ID, '{arguments.At(0)}', dosent exist!";
                 return false;
             }
-            if (Plugin.Instance.DumRef.Contains(Dummy.ReferenceHub))
+            if (Dummy.IsNPC)
             {
                 List<string> effectNames = Dummy.ActiveEffects.Select(effect => effect.name).ToList();
-                string activeEffectsString = string.Join(", ", effectNames);
+                string activeEffectsString = effectNames.Count == 0 ? "None" : string.Join(", ", effectNames);
 
                 response = $"Stats: Player ID: {Dummy.Id}, Name: {Dummy.Nickname}, Health: {Dummy.Health}, Role: {Dummy.Role.Name}, Active Effects: {activeEffectsString}";
                 return true;

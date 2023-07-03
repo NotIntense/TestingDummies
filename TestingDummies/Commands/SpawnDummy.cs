@@ -34,10 +34,10 @@ namespace TestingDummies.Commands
             }
             if (player == null)
             {
-                response = $"Invalid player with the specified ID OR Nickname: {arguments.At(2)}";
+                response = $"Invalid player with the specified ID or Nickname: {arguments.At(2)}";
                 return false;
             }
-            MECExtensionMethods1.RunCoroutine(Plugin.Instance.spawning.SpawnDum(name, role, player));
+            Plugin.Instance.spawning.SpawnDummy(name, role, player);            
             response = $"Spawned dummy with name '{name}', role '{role}', for player '{player.Nickname}'";
             return true;
         }

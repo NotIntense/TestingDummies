@@ -1,10 +1,8 @@
 ﻿using Exiled.API.Enums;
 using Exiled.API.Features;
 using System;
-using System.Collections.Generic;
 using TestingDummies.SpawningHandler;
 using HarmonyLib;
-using System.Linq;
 
 namespace TestingDummies
 {
@@ -12,7 +10,6 @@ namespace TestingDummies
     {
         public static Plugin Instance;
 
-        public List<ReferenceHub> DumRef = new();
         public Spawn spawning;
         private Harmony _harmony;
 
@@ -32,7 +29,7 @@ namespace TestingDummies
 
             base.OnEnabled();
 
-            Log.Warn($"{Name.ToUpper()} DOES AND WILL VIOLATE NORTHWOOD VSR. USE ON PRIVATE SERVERS ONLY AND AT YOUR OWN RISK.");
+            Log.Warn($"{Name.ToUpper()} DOES AND WILL VIOLATE NORTHWOOD VSR WHEN DUMMIES ARE SPAWNED. USE ON PRIVATE SERVERS ONLY AND AT YOUR OWN RISK.");
         }
 
         public override void OnDisabled()
@@ -43,12 +40,6 @@ namespace TestingDummies
             spawning = null;
 
             base.OnDisabled();
-        }
-
-        public static bool IsAI(ReferenceHub hub)
-        {
-            bool isDummy = Instance.DumRef.Contains(hub);
-            return isDummy;
-        }            
+        }           
     }
 }

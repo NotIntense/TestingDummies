@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using Exiled.API.Features;
+using HarmonyLib;
 using NorthwoodLib.Pools;
 using PlayerRoles.FirstPersonControl;
 using System.Collections.Generic;
@@ -6,7 +7,6 @@ using System.Reflection.Emit;
 
 namespace TestingDummies.Patches
 {
-    //Thank you to the SCP-575 Plugin that I st- borrowed this code from :3
     [HarmonyPatch(typeof(FpcMouseLook), nameof(FpcMouseLook.UpdateRotation))]
     public class RotationPatch
     {
@@ -22,8 +22,9 @@ namespace TestingDummies.Patches
             {
                 new(OpCodes.Ldarg_0),
                 new(OpCodes.Ldfld, AccessTools.Field(typeof(FpcMouseLook), nameof(FpcMouseLook._hub))),
-                new(OpCodes.Call, AccessTools.Method(typeof(Plugin), nameof(Plugin.IsAI))),
-                new(OpCodes.Brtrue_S, skip)
+                new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Player), "Get", new[] { typeof(ReferenceHub) })), 
+                new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(Player), nameof(Player.IsNPC))), 
+                new CodeInstruction(OpCodes.Brtrue_S, skip), 
             });
 
             foreach (CodeInstruction instruction in newInstructions)
