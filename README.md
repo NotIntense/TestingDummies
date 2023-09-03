@@ -1,3 +1,5 @@
+![Total Downloads](https://img.shields.io/github/downloads/NotIntense/TestingDummies/total)
+
 # Commands
 DummyStats
 
