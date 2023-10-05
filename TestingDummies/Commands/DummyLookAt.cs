@@ -1,7 +1,5 @@
 ﻿using CommandSystem;
 using Exiled.API.Features;
-using Exiled.API.Interfaces;
-using Exiled.Permissions.Extensions;
 using PlayerRoles.FirstPersonControl;
 using System;
 using UnityEngine;
