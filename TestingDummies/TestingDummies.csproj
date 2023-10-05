@@ -71,19 +71,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Dummy.cs" />
     <Compile Include="Commands\DummyLookAt.cs" />
     <Compile Include="Commands\DummyStats.cs" />
     <Compile Include="Commands\RemoveDummy.cs" />
     <Compile Include="Commands\SpawnDummy.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Patches\RotationPatch.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpawningHandler\Spawn.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EXILED">
-      <Version>7.2.0</Version>
+      <Version>8.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

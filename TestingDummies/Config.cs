@@ -5,7 +5,10 @@ namespace TestingDummies
 {
     public class Config : IConfig
     {
+        [Description("Gets or sets if the plugin is enabled.")]
         public bool IsEnabled { get; set; } = true;
+
+        [Description("Gets or sets if the plugins debug is enabled.")]
         public bool Debug { get; set; } = false;
 
         [Description("Gives and shows a badge on the AI")]
@@ -19,5 +22,7 @@ namespace TestingDummies
 
         [Description("Gives spawned NPCs AFK Immunity (HIGHLY RECOMMENED TO KEEP TRUE AS NPCS ARE CONSTANTLY AFK)")]
         public bool NPCAFKImmunity { get; set; } = true;
+
+        public bool RequirePermission { get; set; } = false;
     }
 }
