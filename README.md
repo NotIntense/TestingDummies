@@ -26,7 +26,7 @@
 
 **Command:** devdummy remove
 
-**Description:** Removes a spawned dev dummy.
+**Description:** Removes a spawned dummy.
 
 **Usage:** devdummy remove [dummyID]
 
