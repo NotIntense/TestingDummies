@@ -1,41 +1,47 @@
 ![Total Downloads](https://img.shields.io/github/downloads/NotIntense/TestingDummies/total)
 
-# Commands
-DummyStats
+# DevDummy Commands
 
-Command: DummyStats
+## LookAtDummy
 
-Aliases: devdummystats, dummystats
+**Command:** devdummy lookat
 
-Description: Gives you stats on the specified dummy.
+**Description:** Makes the specified dummy look at the target player.
 
-Usage: dummystats [dummyID]
+**Usage:** devdummy lookat [dummyID] [targetID]
 
-``Example: dummystats 3``
---------------------------------------------------------
-RemoveDummy
-Command: RemoveDevDummy
+*Example: devdummy lookat 3 5*
 
-Aliases: removedummy, removedevdummy, removedev
+## DummyStats
 
-Description: Removes a spawned dev dummy.
+**Command:** devdummy stats
 
-Usage: removedummy [dummyID]
+**Description:** Provides stats for the specified dummy.
 
-``Example: removedummy 3``
---------------------------------------------------------
-SpawnDummy
+**Usage:** devdummy stats [dummyID]
 
-Command: SpawnDevDummy
+*Example: devdummy stats 3*
 
-Aliases: spawndummy, spawndevdummy, spawndev
+## RemoveDevDummy
 
-Description: Spawns a dummy for development or testing purposes. It has 0 logic.
+**Command:** devdummy remove
 
-Usage: spawndummy [name] [role] [playerID]
+**Description:** Removes a spawned dev dummy.
 
-``Example: spawndummy TestDummy ClassD 2``
---------------------------------------------------------
+**Usage:** devdummy remove [dummyID]
+
+*Example: devdummy remove 3*
+
+## SpawnDevDummy
+
+**Command:** devdummy spawn
+
+**Description:** Spawns a dummy for development or testing purposes. It has no logic.
+
+**Usage:** devdummy spawn [name] [role] [playerID]
+
+*Example: devdummy spawn TestDummy ClassD 2*
+
 # Usage
 
 Open the Remote Admin console.
@@ -44,7 +50,5 @@ Use the provided commands to interact with the dummies.
 
 # Additional Notes : 
 
-This plugin requires Exiled version 7.0.0 or higher.
+This plugin requires Exiled version 8.2.0 or higher.
 **THIS PLUGIN VIOLATES NORTHWOOD VSR**. Use on private servers only.
-
-Devs : Dummies come with a SessionVariable when spawning named "npc"
