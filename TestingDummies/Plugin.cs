@@ -1,8 +1,6 @@
 ﻿using Exiled.API.Enums;
 using Exiled.API.Features;
 using System;
-using TestingDummies.SpawningHandler;
-using HarmonyLib;
 using Exiled.Permissions.Extensions;
 using UnityEngine;
 
@@ -11,7 +9,6 @@ namespace TestingDummies;
 public class Plugin : Plugin<Config>
 {
     public static Plugin Instance;
-    public Spawn spawning;
 
     public override string Name => "Dev Dummies";
     public override string Prefix => Name;
@@ -23,16 +20,13 @@ public class Plugin : Plugin<Config>
     public override void OnEnabled()
     {           
         Instance = this;
-        spawning = new Spawn();
-
         base.OnEnabled();
-
         Log.Warn($"{Name.ToUpper()} DOES AND WILL VIOLATE NORTHWOOD VSR WHEN DUMMIES ARE SPAWNED. USE ON PRIVATE SERVERS ONLY AND AT YOUR OWN RISK.");
     }
 
     public override void OnDisabled()
     {
-        spawning = null;
+        Instance = null;
         base.OnDisabled();
     }                
 }
@@ -50,7 +44,6 @@ public static class Extensions
         return true;
     }
 
-    //Needed to properly rotate dummies
     public static (ushort horizontal, ushort vertical) ToClientUShorts(this Quaternion rotation)
     {
         const float ToHorizontal = ushort.MaxValue / 360f;

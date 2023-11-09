@@ -5,7 +5,7 @@ namespace TestingDummies.SpawningHandler;
 
 public class Spawn 
 {
-    public void SpawnDummy(string Name, RoleTypeId Role, Player Target)
+    public static void SpawnDummy(string Name, RoleTypeId Role, Player Target)
     {
         Npc GeneratedNPC = Npc.Spawn(Name, Role, position: Target.Position);
         if (Plugin.Instance.Config.NPCAFKImmunity) GeneratedNPC.RemoteAdminPermissions = PlayerPermissions.AFKImmunity;

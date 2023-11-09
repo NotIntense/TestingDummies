@@ -23,6 +23,7 @@ namespace TestingDummies
         [Description("Gives spawned NPCs AFK Immunity (HIGHLY RECOMMENED TO KEEP TRUE AS NPCS ARE CONSTANTLY AFK)")]
         public bool NPCAFKImmunity { get; set; } = true;
 
+        [Description("Gets or sets if using DevDummy commands require the 'devdummies' permission.")]
         public bool RequirePermission { get; set; } = false;
     }
 }

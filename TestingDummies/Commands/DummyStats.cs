@@ -21,17 +21,21 @@ public class DummyStats : ICommand
             response = "You do not have the needed permissions to run this command! Needed perms : devdummies";
             return false;
         }
+
         if (arguments.Count != 1)
         {
             response = "Incorrect arguments. Usage: dummystats [dummyID]";
             return false;
         }
+
         Player Dummy = Player.Get(arguments.At(0));
+
         if (Dummy == null)
         {
             response = $"The player with the specified ID, '{arguments.At(0)}', dosent exist!";
             return false;
         }
+
         if (Dummy.IsNPC)
         {
             List<string> effectNames = Dummy.ActiveEffects.Select(effect => effect.name).ToList();

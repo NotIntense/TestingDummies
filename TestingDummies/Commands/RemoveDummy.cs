@@ -17,35 +17,39 @@ public class RemoveDummy : ICommand
     {
         if (!Extensions.HasDummyPermissions(Player.Get(sender)))
         {
-            response = "You do not have the needed permissions to run this command! Needed perms : devdummies";
+            response = "You do not have the needed permissions to run this command! Needed perms: devdummies";
             return false;
         }
+
         if (arguments.Count != 1)
         {
             response = "Insufficient arguments. Usage: removedummy [dummyID]";
             return false;
         }
-        Player Dummy = Player.Get(arguments.At(0));
-        if(Dummy == null)
+
+        Player dummy = Player.Get(arguments.At(0));
+
+        if (dummy == null)
         {
-            response = $"The player with the specified ID, '{arguments.At(0)}', dosent exist!";
+            response = $"The player with the specified ID, '{arguments.At(0)}', doesn't exist!";
             return false;
         }
-        if(Dummy.IsNPC)           
-        {
-            Dummy.ReferenceHub.OnDestroy();
 
-            LeftEventArgs newLeft = new(Dummy);
+        if (dummy.IsNPC)
+        {
+            Npc npcDummy = dummy as Npc;
+            npcDummy.Destroy();
+
+            LeftEventArgs newLeft = new(npcDummy);
             Exiled.Events.Handlers.Player.OnLeft(newLeft);
 
-            response = $"Removed {Dummy.Nickname}!";
+            response = $"Removed {dummy.Nickname}!";
             return true;
         }
         else
         {
-            response = $"ID : '{Dummy.Id}', Nickname : '{Dummy.Nickname}' is not a dummy or you entered a incorrect ID!";
+            response = $"ID: '{dummy.Id}', Nickname: '{dummy.Nickname}' is not a dummy or you entered an incorrect ID!";
             return false;
         }
     }
-
 }
