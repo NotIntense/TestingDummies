@@ -10,7 +10,7 @@ public class Dummy : ParentCommand
 
     public override string Command { get; } = "devdummy";
 
-    public override string[] Aliases { get; } = new[] { "DevDummy", "DEVDUMMY", "Devdummy" };
+    public override string[] Aliases { get; } = new string[0];
 
     public override string Description { get; } = "Parent command for handling Dev-Dummies.";
 

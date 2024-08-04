@@ -10,12 +10,12 @@ public class Plugin : Plugin<Config>
 {
     public static Plugin Instance;
 
-    public override string Name => "Dev Dummies";
+    public override string Name => "TestingDummies";
     public override string Prefix => Name;
     public override string Author => "NotIntense";
     public override PluginPriority Priority => PluginPriority.Medium;
-    public override Version Version => new(2, 1, 7);
-    public override Version RequiredExiledVersion => new(7, 0, 0);
+    public override Version Version => new(2, 1, 8);
+    public override Version RequiredExiledVersion => new(8, 11, 0);
 
     public override void OnEnabled()
     {           
